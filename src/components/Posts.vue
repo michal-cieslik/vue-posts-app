@@ -4,13 +4,14 @@
 
     <div id="posts-content">
       <div
-        v-for="item of data" 
-        :key="item.id"
         class="post-parent"
+        v-for="item in data"
+        :key="item.id"
       >
         <div class="post">
-          <h4> {{ item.title }} </h4>
+          <h3> {{ item.title }} </h3>
           <span> {{ item.body }} </span>
+          <h3> {{ users.find(person => person.id === item.userId)?.name }} </h3>
         </div>
       </div>
     </div>
@@ -18,28 +19,41 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
     name: "Posts",
     data() {
       return {
-        data: []
+        data: [],
+        users: []
       }
     },
-    created() {
+    mounted() {
+
       const url = 'https://jsonplaceholder.typicode.com'
 
-        axios
-          .get(`${url}/posts`)
-          .then((res) => {
-            console.log(res)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      }
+      fetch(`${url}/posts`)
+        .then(res => { return res.json() })
+        .then(json => {
+          this.data = json
+          console.log(this.data)
+
+          fetch(`${url}/users`)
+            .then((res) => {
+              return res.json()
+            })
+            .then(json => {
+              this.users = json
+              console.log(this.users)
+            })
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
     }
+
+}
 </script>
 
 <style>
