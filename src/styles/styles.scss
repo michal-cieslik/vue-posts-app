@@ -1,12 +1,26 @@
 $primary-text-color: #f9f9f9;
 $primary-bg-color: #34394f;
+$global-font: 'Nunito';
+$default-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+$default-border: 10px;
 
 #app {
-  font-family: 'Helvetica';
+  font-family: $global-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.btn {  
+  width: 12em;
+  height: 4em;
+  font-family: $global-font;
+  font-weight: 600;
+  font-size: 1em;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
 
 @media (min-width: 1366px) {
@@ -19,15 +33,15 @@ $primary-bg-color: #34394f;
   }
 
   .post {
-    font-family: 'Helvetica';
+    font-family: $global-font;
     text-align: center;
     color: $primary-text-color;
     padding: 25px;
     margin: 10px;
-    height: 15em;
+    height: 16em;
     width: 75vh;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+    border-radius: $default-border;
+    box-shadow: $default-shadow;
     background-color: $primary-bg-color;
   }
   
@@ -44,15 +58,15 @@ $primary-bg-color: #34394f;
   }
 
   .post {
-    font-family: 'Helvetica';
     text-align: center;
+    font-family: $global-font;
     color: $primary-text-color;
     padding: 25px;
     margin: 10px;
-    height: 15em;
+    height: 16em;
     width: 75vh;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+    border-radius: $default-border;
+    box-shadow: $default-shadow;
     background-color: $primary-bg-color;
   }
 
@@ -69,15 +83,15 @@ $primary-bg-color: #34394f;
   }
 
   .post {
-    font-family: 'Helvetica';
+    font-family: $global-font;
     text-align: center;
     color: $primary-text-color;
     padding: 25px;
     margin: 10px;
     height: 18em;
     width: 48vh;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
+    border-radius: $default-border;
+    box-shadow: $default-shadow;
     background-color: $primary-bg-color;
     position: inherit;
   }

@@ -1,15 +1,19 @@
 <template>
   <div class="post-parent">
-    <div
-      class="post-query-section"
-      v-for="item in data"
+    <div 
+      class="post"
+      v-for="item, index in data" 
       :key="item.id"
     >
-      <div class="post">
-        <h3> {{ item.title }} </h3>
-        <span> {{ item.body }} </span>
-        <h3> {{ users.find(person => person.id === item.userId)?.name }} </h3>
-      </div>
+      <h3>{{ item.title }}</h3>
+      <span> {{ item.body }} </span>
+      <h3>{{ users.find((user) => user.id === item.userId)?.name }}</h3>
+      <button
+        class="btn" 
+        @click="deletePost(index)" 
+      >
+        Delete
+      </button>
     </div>
   </div>
 </template>
@@ -17,37 +21,35 @@
 <script>
 
 export default {
-    name: "Post",
-    data() {
-      return {
-        data: [],
-        users: []
-      }
-    },
-    mounted() {
+  name: "Post",
 
-      const url = 'https://jsonplaceholder.typicode.com'
 
-      fetch(`${url}/posts`)
-        .then(res => { return res.json() })
-        .then(json => {
-          this.data = json
-          console.log(this.data)
-
-          fetch(`${url}/users`)
-            .then((res) => {
-              return res.json()
-            })
-            .then(json => {
-              this.users = json
-              console.log(this.users)
-            })
-        })
-        .catch(error => {
-          console.log(error)
-        })
-
+  data() {
+    return {
+      data: [],
+      users: [],
     }
+  },
 
-}
+  methods: {
+    deletePost(index) {
+      this.data.splice(index, 1)
+    }
+  },
+
+  mounted() {
+    const url = "https://jsonplaceholder.typicode.com";
+
+    fetch(`${url}/posts`)
+      .then((res) => { return res.json() })
+      .then((json) => {
+        this.data = json;
+
+        fetch(`${url}/users`)
+          .then((res) => { return res.json() })
+          .then((json) => { this.users = json })
+      })
+      .catch(e => { console.log(e) })
+  }
+};
 </script>
