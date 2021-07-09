@@ -1,24 +1,15 @@
 <template>
-  <Posts />
+  <Wrapper />
 </template>
 
 <script>
-import Posts from './components/Posts.vue'
+import Wrapper from './components/Wrapper.vue'
+import './styles/styles.scss'
 
 export default {
   name: 'App',
   components: {
-    Posts
+    Wrapper
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Helvetica';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
