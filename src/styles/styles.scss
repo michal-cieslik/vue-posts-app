@@ -23,6 +23,10 @@ $default-border: 10px;
   cursor: pointer;
 }
 
+.post span {
+  cursor: pointer;
+}
+
 @media (min-width: 1366px) {
   .post-parent {
 
